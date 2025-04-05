@@ -11,7 +11,7 @@ class VanillaMultiLoss(nn.Module):
     def forward(self, losses: list) -> torch.tensor:
         total_loss = 0
         for i, loss in enumerate(losses):
-            scaling = self.loss_term_scaling[i].item()  # get the scalar value of the scaling term
+            scaling = self.loss_term_scaling[i]
             
             loss = loss.squeeze() # ensures loss is scalar (shape []); handling loss tensor shapes like [1,1]
             
